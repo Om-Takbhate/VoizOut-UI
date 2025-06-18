@@ -48,3 +48,5 @@ export const testimonials = [
         message: "This is more than a job portal — it's a community where real voices matter. Brilliant work!"
     }
 ]
+
+export const BASE_URL = "http://localhost:3000"
