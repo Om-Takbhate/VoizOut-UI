@@ -1,9 +1,11 @@
 import React, { useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import SelectRole from "./SelectRole"
 import Navbar from './Navbar';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/store/slices/userSlice';
 
 const SignIn = () => {
 
@@ -13,6 +15,9 @@ const SignIn = () => {
     const nameRef = useRef(null)
     const emailRef = useRef(null)
     const passwordRef = useRef(null)
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
 
     const handleLoginSubmit = async (e) => {
@@ -28,7 +33,10 @@ const SignIn = () => {
                 name, emailId, password, role
             }, {withCredentials: true})
 
-            console.log(res)
+            const user = res?.data?.user
+
+            dispatch(addUser(user))
+            navigate("/home")
 
         }
         catch (err) {

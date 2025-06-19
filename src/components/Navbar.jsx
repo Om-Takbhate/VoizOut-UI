@@ -1,11 +1,49 @@
-import { Dialog, DialogPanel } from '@headlessui/react'
+import { Dialog, DialogPanel, MenuButton, MenuItem, Menu, MenuItems } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { BASE_URL, userNavigation } from '../utils/constants'
+import { addUser } from '../utils/store/slices/userSlice'
 
 const Navbar = () => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+    const user = useSelector(store => store.user.user)
+
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+    const getProfile = async () => {
+
+        try {
+            const res = await axios.get(BASE_URL + "/api/v1/user/profile", {
+                withCredentials: true
+            })
+
+
+            const user = res.data.user
+            dispatch(addUser(user))
+            // navigate("/home")
+
+        }
+        catch (err) {
+            console.log(err)
+            if (err.status == 401) {
+                navigate("/login")
+            }
+        }
+    }
+
+    useEffect(() => {
+        if(user == null) {
+            getProfile()
+
+        }
+    }, [])
+
 
     const navigation = [
         { name: 'Product', href: '#' },
@@ -17,7 +55,7 @@ const Navbar = () => {
         <header className="absolute inset-x-0 top-0 z-50 -px-2 lg:max-w-7xl lg:px-8">
             <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
                 <div className="flex lg:flex-1">
-                    <Link to="/" className="-m-1.5 sm:ml-8 p-1.5">
+                    <Link to="/home" className="-m-1.5 sm:ml-8 p-1.5">
                         <span className="sr-only">VoizOut</span>
                         {/* <img
                 alt=""
@@ -44,16 +82,45 @@ const Navbar = () => {
                         </Link>
                     ))}
                 </div>
-                <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-                    <Link to="/login" className="text-sm/6 font-semibold text-gray-900">Log in<span aria-hidden="true">&rarr;</span>
-                    </Link>
-                </div>
+                {
+                    !user ?
+                        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+                            <Link to="/login" className="text-sm/6 font-semibold text-gray-900">Log in<span aria-hidden="true">&rarr;</span>
+                            </Link>
+                        </div> :
+                        <div className='hidden lg:flex lg:flex-1 lg:justify-end'>
+                            <Menu as="div" className="relative ">
+                                <div>
+                                    <MenuButton className="relative flex max-w-xs items-center rounded-full bg-gray-500 text-sm focus:ring-2 focus:ring-white focus:ring-offset-1 focus:ring-offset-gray-800 focus:outline-hidden">
+                                        <span className="absolute -inset-1.5" />
+                                        <span className="sr-only">Open user menu</span>
+                                        <img alt="" src={user.imageUrl || "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg"} className="size-8 rounded-full" />
+                                    </MenuButton>
+                                </div>
+                                <MenuItems
+                                    transition
+                                    className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                                >
+                                    {userNavigation.map((item) => (
+                                        <MenuItem key={item.name}>
+                                            <Link
+                                                to={item.href}
+                                                className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                                            >
+                                                {item.name}
+                                            </Link>
+                                        </MenuItem>
+                                    ))}
+                                </MenuItems>
+                            </Menu>
+                        </div>
+                }
             </nav>
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                 <div className="fixed inset-0 z-50" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
                     <div className="flex items-center justify-between">
-                        <Link to="#" className="-m-1.5 p-1.5">
+                        <Link to="/home" className="-m-1.5 p-1.5">
                             <span className="sr-only">Your Company</span>
                             <h2 className='text-2xl  font-bold'>VoizOut</h2>
                         </Link>
@@ -79,14 +146,29 @@ const Navbar = () => {
                                     </Link>
                                 ))}
                             </div>
-                            <div className="py-1">
-                                <Link
-                                    to="/login"
-                                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
-                                >
-                                    Log in
-                                </Link>
-                            </div>
+                            {!user ?
+                                <div className="py-1">
+                                    <Link
+                                        to="/login"
+                                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                    >
+                                        Log in
+                                    </Link>
+                                </div>
+                                :
+                                <div className="space-y-2 py-6">
+                                    {userNavigation.map((item) => (
+                                        <Link
+                                            key={item.name}
+                                            to={item.href}
+                                            className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    ))}
+                                </div>
+
+                            }
                         </div>
                     </div>
                 </DialogPanel>

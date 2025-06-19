@@ -49,4 +49,20 @@ export const testimonials = [
     }
 ]
 
+export const userNavigation = [
+    {
+        name: "Profile",
+        href: "/profile",
+    },
+    {
+        name: "My Applied",
+        href: "/applied",
+    },
+    {
+        name: "Log out",
+        href: "/logout"
+    }
+]
+
+
 export const BASE_URL = "http://localhost:3000"
