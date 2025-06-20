@@ -1,4 +1,3 @@
-import React from "react";
 import {
     Avatar,
     Button,
@@ -39,7 +38,7 @@ function Profile() {
                         <div className="flex flex-col sm:flex-row mx-auto sm:mx-0 sm:justify-end items-center gap-3">
                             <Avatar src={user?.photoUrl || "https://media.istockphoto.com/id/1562983249/photo/portrait-of-happy-and-successful-businessman-indian-man-smiling-and-looking-at-camera.jpg?s=612x612&w=0&k=20&c=tfBv6taG9nTidFwENcrvEEvRHABN5gDAmg-K1G1Etnc="} alt="avatar" className="rounded" variant="rounded" />
                             <div>
-                                <Typography color="amber" className="text-center sm:text-start" variant="h6">
+                                <Typography color="amber" className="text-center sm:text-start font-bold sm:text-xl" variant="h6">
                                     {user?.name}
                                 </Typography>
                                 <Typography

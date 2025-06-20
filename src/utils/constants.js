@@ -59,10 +59,23 @@ export const userNavigation = [
         href: "/applied",
     },
     {
+        name: "Edit Profile",
+        href: "/profile/edit",
+    },
+    {
         name: "Log out",
         href: "/logout"
     }
 ]
 
+export const navigation = [
+    { name: 'Jobs', href: '/opportunities/job' },
+    { name: 'Internships', href: '/opportunities/internship' },
+    { name: 'Experiences', href: '/experiences' },
+    { name: 'Company', href: '#' },
+]
+
 
 export const BASE_URL = "http://localhost:3000"
+
+export const protectedRoutes = ["/profile/edit", "/opportunities/job", "/opportunities/internship"]

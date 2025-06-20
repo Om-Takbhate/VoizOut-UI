@@ -1,7 +1,6 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import SelectRole from "./SelectRole"
-import Navbar from './Navbar';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';

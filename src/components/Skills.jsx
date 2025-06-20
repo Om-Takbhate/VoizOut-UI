@@ -1,5 +1,4 @@
 import { Button, Card, CardBody, Typography } from '@material-tailwind/react'
-import React from 'react'
 import { useSelector } from 'react-redux'
 
 const Skills = () => {
@@ -24,7 +23,7 @@ const Skills = () => {
                                     user.skills.map(skill => (
                                         <Button
                                             key={skill}
-                                            className="border-gray-300 flex items-center gap-2 hover:bg-indigo-500 hover:text-white cursor-pointer" >
+                                            className="border-gray-300 flex items-center gap-2 cursor-pointer" >
                                             {skill}
                                         </Button>
                                     ))

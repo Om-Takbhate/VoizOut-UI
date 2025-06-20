@@ -1,4 +1,4 @@
-import React from 'react'
+import UserCard from './UserCard'
 const TeamMembers = () => {
 
     const people = [
@@ -39,15 +39,7 @@ const TeamMembers = () => {
                 </div>
                 <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
                     {people.map((person) => (
-                        <li key={person.name}>
-                            <div className="flex items-center gap-x-6">
-                                <img alt="" src={person.imageUrl} className="size-16 rounded-full" />
-                                <div>
-                                    <h3 className="text-base/7 font-semibold tracking-tight text-gray-900">{person.name}</h3>
-                                    <p className="text-sm/6 font-semibold text-indigo-600">{person.role}</p>
-                                </div>
-                            </div>
-                        </li>
+                        <UserCard key={person.name} person={person} />
                     ))}
                 </ul>
             </div>

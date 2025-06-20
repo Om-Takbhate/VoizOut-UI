@@ -1,24 +1,28 @@
 import { Dialog, DialogPanel, MenuButton, MenuItem, Menu, MenuItems } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import { BASE_URL, userNavigation } from '../utils/constants'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { BASE_URL, navigation, userNavigation } from '../utils/constants'
 import { addUser } from '../utils/store/slices/userSlice'
 
 const Navbar = () => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const user = useSelector(store => store.user.user)
-
+    console.log("user is", user)
+    const location = useLocation()
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const getProfile = async () => {
 
+        const currentPath = location.pathname
+
         try {
+
             const res = await axios.get(BASE_URL + "/api/v1/user/profile", {
                 withCredentials: true
             })
@@ -30,27 +34,16 @@ const Navbar = () => {
 
         }
         catch (err) {
-            console.log(err)
-            if (err.status == 401) {
-                navigate("/login")
-            }
         }
     }
 
     useEffect(() => {
-        if(user == null) {
+        if (user == null) {
             getProfile()
-
         }
     }, [])
 
 
-    const navigation = [
-        { name: 'Product', href: '#' },
-        { name: 'Features', href: '#' },
-        { name: 'Marketplace', href: '#' },
-        { name: 'Company', href: '#' },
-    ]
     return (
         <header className="absolute inset-x-0 top-0 z-50 -px-2 lg:max-w-7xl lg:px-8">
             <nav aria-label="Global" className="flex items-center justify-between p-6 lg:px-8">
@@ -77,7 +70,7 @@ const Navbar = () => {
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
                     {navigation.map((item) => (
-                        <Link to={"#"} key={item.name} className="text-sm/6 font-semibold text-gray-900">
+                        <Link to={item.href} key={item.name} className="text-sm/6 font-semibold text-gray-900">
                             {item.name}
                         </Link>
                     ))}
@@ -138,8 +131,9 @@ const Navbar = () => {
                             <div className="space-y-2 py-6">
                                 {navigation.map((item) => (
                                     <Link
+                                        onClick={() => setMobileMenuOpen(false)}
                                         key={item.name}
-                                        to={"#"}
+                                        to={item.href}
                                         className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                                     >
                                         {item.name}
@@ -149,6 +143,7 @@ const Navbar = () => {
                             {!user ?
                                 <div className="py-1">
                                     <Link
+                                        onClick={() => setMobileMenuOpen(false)}
                                         to="/login"
                                         className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
                                     >
@@ -159,6 +154,7 @@ const Navbar = () => {
                                 <div className="space-y-2 py-6">
                                     {userNavigation.map((item) => (
                                         <Link
+                                            onClick={() => setMobileMenuOpen(false)}
                                             key={item.name}
                                             to={item.href}
                                             className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
