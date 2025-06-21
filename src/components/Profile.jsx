@@ -9,13 +9,38 @@ import {
 import { useSelector } from "react-redux";
 import Skills from "./Skills";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { BASE_URL } from "../utils/constants";
 
 function Profile() {
 
+    const [userProfile, setUserProfile] = useState({})
     const user = useSelector(store => store.user.user)
     const params = useParams()
 
     console.log(params)
+
+    const fetchUser = async () => {
+        try {
+            const userId = params.userId
+            const res = await axios.get(BASE_URL + "/api/v1/user/profile/" + userId, { withCredentials: true })
+
+            setUserProfile(res.data?.data)
+        }
+        catch (err) {
+            console.log(err)
+        }
+    }
+
+    useEffect(() => {
+        if (params.userId != null) {
+            fetchUser()
+        }
+        else {
+            setUserProfile(user)
+        }
+    }, [params.userId])
 
     if (user == null) return;
     return (
@@ -36,17 +61,20 @@ function Profile() {
                 <CardBody>
                     <div className="flex lg:gap-0 gap-6 flex-wrap justify-between items-center">
                         <div className="flex flex-col sm:flex-row mx-auto sm:mx-0 sm:justify-end items-center gap-3">
-                            <Avatar src={user?.photoUrl || "https://media.istockphoto.com/id/1562983249/photo/portrait-of-happy-and-successful-businessman-indian-man-smiling-and-looking-at-camera.jpg?s=612x612&w=0&k=20&c=tfBv6taG9nTidFwENcrvEEvRHABN5gDAmg-K1G1Etnc="} alt="avatar" className="rounded" variant="rounded" />
+                            <Avatar src={userProfile?.photoUrl || "https://media.istockphoto.com/id/1562983249/photo/portrait-of-happy-and-successful-businessman-indian-man-smiling-and-looking-at-camera.jpg?s=612x612&w=0&k=20&c=tfBv6taG9nTidFwENcrvEEvRHABN5gDAmg-K1G1Etnc="} alt="avatar" className="" variant="circular" />
                             <div>
                                 <Typography color="amber" className="text-center sm:text-start font-bold sm:text-xl" variant="h6">
-                                    {user?.name}
+                                    {userProfile?.name}
                                 </Typography>
-                                <Typography
-                                    variant="small"
-                                    className="font-normal text-gray-600"
-                                >
-                                    {user.emailId}
-                                </Typography>
+                                {
+                                    userProfile.emailId &&
+                                    <Typography
+                                        variant="small"
+                                        className="font-normal text-gray-600"
+                                    >
+                                        {userProfile.emailId}
+                                    </Typography>
+                                }
                             </div>
                         </div>
                         <div className="flex flex-wrap items-center gap-2">
@@ -77,11 +105,11 @@ function Profile() {
                         variant="small"
                         className="font-normal text-gray-600 mt-6"
                     >
-                        {user.bio}
+                        {userProfile.bio}
                     </Typography>
                 </CardBody>
             </Card>
-            <Skills />
+            <Skills skills={["React", "Nodejs", "Express Js"]} />
         </section>
     );
 }

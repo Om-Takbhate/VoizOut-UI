@@ -4,7 +4,7 @@ export default function PageNotFound() {
     return (
         <div className="relative h-screen">
             <div className="absolute inset-0">
-                <div className="absolute top-0 -z-10 h-full w-full bg-gray-200 [&>div]:absolute [&>div]:bottom-auto [&>div]:left-auto [&>div]:right-0 [&>div]:top-0 [&>div]:h-[500px] [&>div]:w-[500px] [&>div]:-translate-x-[30%] [&>div]:translate-y-[20%] [&>div]:rounded-full [&>div]:bg-[rgba(230,94,15,0.59)] [&>div]:opacity-50 [&>div]:blur-[80px]">
+                <div className="absolute top-0 -z-10 h-full w-full bg-gray-200 [&>div]:absolute [&>div]:bottom-auto [&>div]:left-auto [&>div]:right-0 [&>div]:top-0 [&>div]:h-[500px] [&>div]:w-[500px] [&>div]:-translate-x-[30%] [&>div]:translate-y-[20%] [&>div]:rounded-full [&>div]:bg-[rgba(200,110,225,0.75)] [&>div]:opacity-50 [&>div]:blur-[80px]">
                     <div></div>
 
                 </div>

@@ -42,9 +42,9 @@ export default function Opportunities() {
         <div className='min-h-screen py-20'>
             {
                 opportunities.map(opportunity => (
-                    <Link key={opportunity._id} to={"/opportunities/description/" + opportunity._id} >
-                        <SingleOpportunity opportunity={opportunity} />
-                    </Link>
+                    <div key={opportunity._id} >
+                        <SingleOpportunity opportunity={opportunity} showViewButton={true} />
+                    </div>
                 ))
             }
         </div>

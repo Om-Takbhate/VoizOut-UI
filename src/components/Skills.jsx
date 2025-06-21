@@ -1,11 +1,7 @@
 import { Button, Card, CardBody, Typography } from '@material-tailwind/react'
 import { useSelector } from 'react-redux'
 
-const Skills = () => {
-
-    const user = useSelector(store => store.user.user)
-
-    if(user == null) return;
+const Skills = ({ skills }) => {
     return (
         <Card
             shadow={true}
@@ -18,10 +14,12 @@ const Skills = () => {
                             <Typography color="amber" variant="h4">
                                 Skills
                             </Typography>
-                            <div className="flex gap-4 flex-wrap">
+                            <div className="flex gap-4 mt-4 flex-wrap">
                                 {
-                                    user.skills.map(skill => (
+                                    skills?.map(skill => (
                                         <Button
+                                            size='sm'
+                                            variant='filled'
                                             key={skill}
                                             className="border-gray-300 flex items-center gap-2 cursor-pointer" >
                                             {skill}
@@ -31,14 +29,7 @@ const Skills = () => {
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <Typography
-                    variant="small"
-                    className="font-normal text-gray-600 mt-6"
-                >
-                    {user.bio}
-                </Typography>
             </CardBody>
         </Card>
     )

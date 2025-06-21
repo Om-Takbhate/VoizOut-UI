@@ -1,8 +1,9 @@
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
-import { BriefcaseIcon, BuildingOffice2Icon, CalendarIcon, CheckIcon, ChevronDownIcon, CurrencyRupeeIcon, MapPinIcon, PencilIcon, WrenchScrewdriverIcon } from '@heroicons/react/20/solid'
-import { LinkIcon } from '@heroicons/react/24/outline'
+import { Button, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
+import { BoltIcon, BriefcaseIcon, BuildingOffice2Icon, CalendarIcon, ChevronDownIcon, CurrencyRupeeIcon, MapPinIcon, PencilIcon, WrenchScrewdriverIcon } from '@heroicons/react/20/solid'
+import { BookmarkIcon, EyeIcon } from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
 
-const SingleOpportunity = ({ opportunity }) => {
+const SingleOpportunity = ({ opportunity, showViewButton }) => {
     const date = new Date(opportunity.deadline)
 
     const dateString = new Intl.DateTimeFormat('en-GB', {
@@ -53,33 +54,35 @@ const SingleOpportunity = ({ opportunity }) => {
                     </div>
                 </div>
                 <div className="mt-5 flex lg:mt-0 lg:ml-4">
-                    <span className="hidden sm:block">
-                        <button
-                            type="button"
-                            className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
-                        >
-                            <PencilIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-gray-400" />
-                            Edit
-                        </button>
-                    </span>
-
+                    {
+                        showViewButton &&
+                        <span className="ml-3 hidden sm:block">
+                            <Link
+                                to={"/opportunities/description/" + opportunity._id}
+                                type="button"
+                                className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
+                            >
+                                <EyeIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-gray-400" />
+                                View
+                            </Link>
+                        </span>
+                    }
                     <span className="ml-3 hidden sm:block">
-                        <button
+                        <Button
                             type="button"
                             className="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-xs ring-1 ring-gray-300 ring-inset hover:bg-gray-50"
                         >
-                            <LinkIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-gray-400" />
-                            View
-                        </button>
+                            <BookmarkIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5 text-gray-400" />
+                            Save
+                        </Button>
                     </span>
-
                     <span className="sm:ml-3">
                         <button
                             type="button"
                             className="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                         >
-                            <CheckIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5" />
-                            Publish
+                            <BoltIcon aria-hidden="true" className="mr-1.5 -ml-0.5 size-5" />
+                            Apply
                         </button>
                     </span>
 
@@ -92,23 +95,34 @@ const SingleOpportunity = ({ opportunity }) => {
 
                         <MenuItems
                             transition
-                            className="absolute right-0 z-10 mt-2 -mr-1 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
+                            className="absolute right-0 z-10 mt-2 -mr-1 w-48 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 transition focus:outline-hidden data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
                         >
-                            <MenuItem>
-                                <a
+                            {/* <MenuItem>
+                                <Link
                                     href="#"
                                     className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
                                 >
                                     Edit
-                                </a>
-                            </MenuItem>
+                                </Link>
+                            </MenuItem> */}
+                            {
+                                showViewButton &&
+                                <MenuItem>
+                                    <Link
+                                        to={"/opportunities/description/" + opportunity._id}
+                                        className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                                    >
+                                        View
+                                    </Link>
+                                </MenuItem>
+                            }
                             <MenuItem>
-                                <a
+                                <Button
                                     href="#"
-                                    className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden"
+                                    className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden w-full text-left cursor-pointer"
                                 >
-                                    View
-                                </a>
+                                    Save
+                                </Button>
                             </MenuItem>
                         </MenuItems>
                     </Menu>

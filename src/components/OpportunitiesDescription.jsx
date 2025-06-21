@@ -36,22 +36,22 @@ export default function OpportunitiesDescription() {
     if (Object.keys(opportunity).length == 0) return <OpportunitiesDescriptionSkeleton />;
 
     return (
-        <div className="mx-4 mt-15 lg:justify-between py-2 px-2 sm:px-12 min-h-screen ">
-            <SingleOpportunity opportunity={opportunity} />
+        <div className="mx-2 px-2 mt-15 lg:justify-between py-2  sm:px-12 min-h-screen mb-20">
+            <SingleOpportunity opportunity={opportunity} showViewButton={false} />
 
-            <div className="lg:flex mx-4 lg:justify-between flex-col py-6 px-2 sm:px-12 mt-5 ">
+            <div className="lg:flex mx-2 lg:justify-between flex-col py-6 px-2 sm:px-12 mt-5 ">
                 <h2 className='text-lg font-bold'>Posted by</h2>
-                <ul role="list" className="grid gap-y-12 mt-4 ">
-                    <Link to={"/profile/" + opportunity.recruiter._id} className='hover:bg-gray-100 px-2 py-1'>
+                <ul role="list" className="grid gap-y-12 mt-4 bg-gray-50 rounded-xl hover:bg-gray-100 py-1">
+                    <Link to={"/profile/" + opportunity.recruiter._id} className=' px-2 py-1'>
                         <UserCard person={opportunity.recruiter} />
                     </Link>
                 </ul>
             </div>
 
-            <div className="lg:flex mx-4 lg:justify-between py-6 px-2  sm:px-12 mt-5 ">
-                <h2 className='text-lg font-semibold'>Description</h2>
+            <div className="lg:flex mx-2 lg:justify-between py-6 px-2  sm:px-12 mt-5 ">
+                <h2 className='text-lg font-bold'>Description</h2>
             </div>
-            <div className="lg:flex mx-4 lg:justify-between px-2  sm:px-12 mt-5 ">
+            <div className="lg:flex mx-2 lg:justify-between pr-4  sm:px-12 mt-5 ">
                 <p>{opportunity.description}</p>
             </div>
         </div>
