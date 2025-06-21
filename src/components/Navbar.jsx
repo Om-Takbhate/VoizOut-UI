@@ -6,12 +6,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { BASE_URL, navigation, userNavigation } from '../utils/constants'
 import { addUser } from '../utils/store/slices/userSlice'
+import { setActiveTab } from '../utils/store/slices/appSlice'
 
 const Navbar = () => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const user = useSelector(store => store.user.user)
-    console.log("user is", user)
+    const app = useSelector(store => store.app)
+    
     const location = useLocation()
 
     const dispatch = useDispatch()
@@ -70,7 +72,7 @@ const Navbar = () => {
                 </div>
                 <div className="hidden lg:flex lg:gap-x-12">
                     {navigation.map((item) => (
-                        <Link to={item.href} key={item.name} className="text-sm/6 font-semibold text-gray-900">
+                        <Link to={item.href} key={item.name} onClick={() => dispatch(setActiveTab(item.name))} className={`text-sm/6 font-semibold ${app?.activeTab == item?.name ? "text-indigo-500" : "text-gray-900"} hover:text-indigo-500`}>
                             {item.name}
                         </Link>
                     ))}
@@ -131,10 +133,16 @@ const Navbar = () => {
                             <div className="space-y-2 py-6">
                                 {navigation.map((item) => (
                                     <Link
-                                        onClick={() => setMobileMenuOpen(false)}
+                                        onClick=
+                                        {
+                                            () => {
+                                                setMobileMenuOpen(false)
+                                                dispatch(setActiveTab(item.name))
+                                            }
+                                        }
                                         key={item.name}
                                         to={item.href}
-                                        className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+                                        className={`-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold ${item.name == user?.activeTab ? "text-indigo-500" : "text-gray-900"} hover:bg-gray-50`}
                                     >
                                         {item.name}
                                     </Link>

@@ -12,10 +12,11 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
+import UserProfileSkeleton from "./skeletons/UserProfileSkeleton";
 
 function Profile() {
 
-    const [userProfile, setUserProfile] = useState({})
+    const [userProfile, setUserProfile] = useState()
     const user = useSelector(store => store.user.user)
     const params = useParams()
 
@@ -41,8 +42,11 @@ function Profile() {
             setUserProfile(user)
         }
     }, [params.userId])
+    
+    if(userProfile == null) {
+        return <UserProfileSkeleton />
+    }
 
-    if (user == null) return;
     return (
         <section className="container mx-auto px-4 sm:px-8 py-20 min-h-screen">
             <Card
@@ -61,9 +65,9 @@ function Profile() {
                 <CardBody>
                     <div className="flex lg:gap-0 gap-6 flex-wrap justify-between items-center">
                         <div className="flex flex-col sm:flex-row mx-auto sm:mx-0 sm:justify-end items-center gap-3">
-                            <Avatar src={userProfile?.photoUrl || "https://media.istockphoto.com/id/1562983249/photo/portrait-of-happy-and-successful-businessman-indian-man-smiling-and-looking-at-camera.jpg?s=612x612&w=0&k=20&c=tfBv6taG9nTidFwENcrvEEvRHABN5gDAmg-K1G1Etnc="} alt="avatar" className="" variant="circular" />
+                            <Avatar src={userProfile?.photoUrl || "https://cdn.pixabay.com/photo/2023/02/18/11/00/icon-7797704_640.png"} alt="avatar" className="" variant="circular" />
                             <div>
-                                <Typography color="amber" className="text-center sm:text-start font-bold sm:text-xl" variant="h6">
+                                <Typography variant="h6" color="amber" className="text-center sm:text-start font-bold sm:text-xl">
                                     {userProfile?.name}
                                 </Typography>
                                 {
@@ -109,7 +113,7 @@ function Profile() {
                     </Typography>
                 </CardBody>
             </Card>
-            <Skills skills={["React", "Nodejs", "Express Js"]} />
+            {/* <Skills skills={["React", "Nodejs", "Express Js"]} /> */}
         </section>
     );
 }

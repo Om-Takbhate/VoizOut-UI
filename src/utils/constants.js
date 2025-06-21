@@ -69,6 +69,7 @@ export const userNavigation = [
 ]
 
 export const navigation = [
+    { name: 'Home', href: '/home' },
     { name: 'Jobs', href: '/opportunities/job' },
     { name: 'Internships', href: '/opportunities/internship' },
     { name: 'Experiences', href: '/experiences' },

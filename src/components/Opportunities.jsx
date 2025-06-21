@@ -15,7 +15,6 @@ export default function Opportunities() {
 
     const getOpportunities = async () => {
         try {
-            console.log("The type is :", type)
             const res = await axios.get(BASE_URL + "/api/v1/opportunities/search?type=" + type, {
                 withCredentials: true
             })
@@ -35,7 +34,6 @@ export default function Opportunities() {
         getOpportunities()
     }, [type])
 
-    console.log("Opp are", opportunities)
 
 
     return (
