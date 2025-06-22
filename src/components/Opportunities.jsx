@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../utils/constants'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import SingleOpportunity from './SingleOpportunity'
+
+const SingleOpportunity = lazy(() => import('./SingleOpportunity'))
+
 
 export default function Opportunities() {
 

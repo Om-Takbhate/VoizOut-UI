@@ -25,7 +25,7 @@ export default function OpportunitiesDescription() {
             setOpportunity(res.data.data)
         }
         catch (err) {
-
+            alert(err.message)
         }
     }
 

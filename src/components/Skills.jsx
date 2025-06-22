@@ -12,18 +12,16 @@ const Skills = ({ skills }) => {
                     <div className="flex items-center gap-3">
                         <div>
                             <Typography color="amber" variant="h4">
-                                Skills
+                                Skills 
                             </Typography>
                             <div className="flex gap-4 mt-4 flex-wrap">
                                 {
                                     skills?.map(skill => (
-                                        <Button
-                                            size='sm'
-                                            variant='filled'
+                                        <button
                                             key={skill}
-                                            className="border-gray-300 flex items-center gap-2 cursor-pointer" >
+                                            className="bg-black flex items-center gap-2 cursor-pointer py-1 px-3 text-white rounded-md"  >
                                             {skill}
-                                        </Button>
+                                        </button>
                                     ))
                                 }
                             </div>

@@ -113,7 +113,7 @@ function Profile() {
                     </Typography>
                 </CardBody>
             </Card>
-            {/* <Skills skills={["React", "Nodejs", "Express Js"]} /> */}
+            <Skills skills={userProfile.skills} />
         </section>
     );
 }
