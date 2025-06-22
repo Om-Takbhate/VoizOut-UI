@@ -77,6 +77,6 @@ export const navigation = [
 ]
 
 
-export const BASE_URL = "http://localhost:3000"
+export const BASE_URL = "https://voizout.onrender.com"
 
 export const protectedRoutes = ["/profile/edit", "/opportunities/job", "/opportunities/internship"]
