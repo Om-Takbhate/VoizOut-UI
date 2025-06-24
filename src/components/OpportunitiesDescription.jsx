@@ -40,7 +40,7 @@ export default function OpportunitiesDescription() {
         <div className="mx-2 px-2 mt-15 lg:justify-between py-2  sm:px-12 min-h-screen mb-20">
             <SingleOpportunity opportunity={opportunity} showViewButton={false} />
 
-            <div className="lg:flex mx-2 lg:justify-between flex-col py-6 px-2 sm:px-12 mt-5 ">
+            <div className="lg:flex mx-2 lg:justify-between flex-col py-6 px-2 sm:px-4 mt-5 ">
                 <h2 className='text-lg font-bold'>Posted by</h2>
                 <ul role="list" className="grid gap-y-12 mt-4 bg-gray-50 rounded-xl hover:bg-gray-100 py-1">
                     <Link to={"/profile/" + opportunity.recruiter._id} className=' px-2 py-1'>
@@ -49,7 +49,7 @@ export default function OpportunitiesDescription() {
                 </ul>
             </div>
 
-            <div className="lg:flex mx-2 lg:justify-between py-6 px-2  sm:px-12 mt-5 ">
+            <div className="lg:flex mx-2 lg:justify-between py-6 px-2  sm:px-4 mt-5 ">
                 <h2 className='text-lg font-bold'>Description</h2>
             </div>
             <div className="lg:flex mx-2 lg:justify-between pr-4  sm:px-4 mt-5 ">
