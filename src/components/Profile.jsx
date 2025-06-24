@@ -55,7 +55,7 @@ function Profile() {
             >
                 <CardHeader shadow={false} className="h-60 !rounded-lg">
                     <img
-                        src="https://marketplace.canva.com/EAGCv5CFLkI/1/0/1600w/canva-grey-and-black-simple-marketing-manager-linkedin-banner-b6Jvyrdp9RE.jpg"
+                        scr={"https://png.pngtree.com/thumb_back/fh260/back_our/20190625/ourmid/pngtree-simple-small-fresh-watercolor-company-profile-ppt-background-image_260406.jpg"}
                         alt="dark"
                         height={1024}
                         width={1024}
