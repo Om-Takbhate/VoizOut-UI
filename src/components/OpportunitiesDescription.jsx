@@ -5,6 +5,7 @@ import axios from 'axios'
 import { BASE_URL } from '../utils/constants'
 import SingleOpportunity from './SingleOpportunity'
 import UserCard from './UserCard'
+import Skills from './Skills'
 
 export default function OpportunitiesDescription() {
 
@@ -53,6 +54,9 @@ export default function OpportunitiesDescription() {
             </div>
             <div className="lg:flex mx-2 lg:justify-between pr-4  sm:px-12 mt-5 ">
                 <p>{opportunity.description}</p>
+            </div>
+            <div className='lg:flex mx-2 lg:justify-between pr-4  sm:px-12 mt-5'>
+                <Skills skills={opportunity.skills} />
             </div>
         </div>
     )
