@@ -55,7 +55,7 @@ export default function OpportunitiesDescription() {
             <div className="lg:flex mx-2 lg:justify-between pr-4  sm:px-4 mt-5 ">
                 <p>{opportunity.description}</p>
             </div>
-            <div className='lg:flex mx-2 lg:justify-between pr-4  sm:px-12 mt-5'>
+            <div className='lg:flex mx-2 lg:justify-between pr-4  sm:px-4 mt-5'>
                 <Skills skills={opportunity.skills} showBorder={false} />
             </div>
         </div>
