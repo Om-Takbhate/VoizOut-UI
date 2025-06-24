@@ -1,10 +1,10 @@
 import { Button, Card, CardBody, Typography } from '@material-tailwind/react'
 import { useSelector } from 'react-redux'
 
-const Skills = ({ skills }) => {
+const Skills = ({ skills, showBorder }) => {
     return (
         <Card
-            shadow={true}
+            shadow={showBorder}
             className="border border-gray-300 rounded-2xl mt-5"
         >
             <CardBody>
@@ -19,7 +19,7 @@ const Skills = ({ skills }) => {
                                     skills?.map(skill => (
                                         <button
                                             key={skill}
-                                            className="bg-black flex items-center gap-2 cursor-pointer py-1 px-3 text-white rounded-md"  >
+                                            className={`${showBorder ? "bg-black text-white" : "bg-white text-black" } flex items-center gap-2 cursor-pointer py-1 px-3 rounded-md`}  >
                                             {skill}
                                         </button>
                                     ))
