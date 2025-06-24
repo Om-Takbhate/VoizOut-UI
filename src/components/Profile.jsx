@@ -55,7 +55,7 @@ function Profile() {
             >
                 <CardHeader shadow={false} className="h-60 !rounded-lg">
                     <img
-                        scr={"https://png.pngtree.com/thumb_back/fh260/back_our/20190625/ourmid/pngtree-simple-small-fresh-watercolor-company-profile-ppt-background-image_260406.jpg"}
+                        scr="https://influencermarketinghub.com/wp-content/uploads/2019/11/shutterstock_1038395047-1024x576.jpg"
                         alt="dark"
                         height={1024}
                         width={1024}
