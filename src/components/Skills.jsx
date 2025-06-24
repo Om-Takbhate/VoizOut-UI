@@ -19,7 +19,7 @@ const Skills = ({ skills, showBorder }) => {
                                     skills?.map(skill => (
                                         <button
                                             key={skill}
-                                            className={`${showBorder ? "bg-black text-white" : "bg-white text-black" } flex items-center gap-2 cursor-pointer py-1 px-3 rounded-md`}  >
+                                            className={`${showBorder ? "bg-black text-white" : "bg-white outline-black text-black" } flex items-center gap-2 cursor-pointer py-1 px-3 rounded-md`}  >
                                             {skill}
                                         </button>
                                     ))
