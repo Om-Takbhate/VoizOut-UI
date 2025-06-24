@@ -52,7 +52,7 @@ export default function OpportunitiesDescription() {
             <div className="lg:flex mx-2 lg:justify-between py-6 px-2  sm:px-12 mt-5 ">
                 <h2 className='text-lg font-bold'>Description</h2>
             </div>
-            <div className="lg:flex mx-2 lg:justify-between pr-4  sm:px-12 mt-5 ">
+            <div className="lg:flex mx-2 lg:justify-between pr-4  sm:px-4 mt-5 ">
                 <p>{opportunity.description}</p>
             </div>
             <div className='lg:flex mx-2 lg:justify-between pr-4  sm:px-12 mt-5'>
