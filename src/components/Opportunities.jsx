@@ -42,7 +42,7 @@ export default function Opportunities() {
     }
 
     return (
-        <div className='min-h-screen py-20'>
+        <div className='min-h-screen py-20 mx-2'>
             {
                 opportunities.map(opportunity => (
                     <div key={opportunity._id} >
