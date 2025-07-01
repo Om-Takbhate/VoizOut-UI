@@ -5,6 +5,8 @@ import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/store/slices/userSlice';
+import { login } from '../services/authService';
+import { showToast } from '../utils/store/slices/appSlice';
 
 const SignIn = () => {
 
@@ -18,8 +20,31 @@ const SignIn = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const handleLoginClick = async () => {
+        const emailId = emailRef.current.value
+        const password = passwordRef.current.value
 
-    const handleLoginSubmit = async (e) => {
+        try {
+
+            const data = await login({emailId, password})
+            console.log(data)
+            console.log(data.data.message)
+
+            dispatch(showToast({
+                message: data.data.message,
+                type: "success"
+            }))
+            dispatch(addUser(data.data.user))
+            navigate("/home")
+        }
+        catch(err) {
+            console.log(err)
+            setError(err.response.data.message)
+        }
+    }
+
+
+    const handleSignUpClick = async (e) => {
         e.preventDefault()
 
         try {
@@ -30,17 +55,27 @@ const SignIn = () => {
 
             const res = await axios.post(BASE_URL + "/auth/signup", {
                 name, emailId, password, role
-            }, {withCredentials: true})
+            }, { withCredentials: true })
 
             const user = res?.data?.user
 
+            dispatch(showToast({
+                message: "Account created successfully",
+                type: "success"
+            }))
             dispatch(addUser(user))
             navigate("/home")
+
 
         }
         catch (err) {
             console.log("The error is", err)
             const errMessage = err?.response?.data?.message || err.message
+
+            dispatch(showToast({
+                message: errMessage,
+                type: "error"
+            }))
             setError(errMessage)
         }
 
@@ -65,7 +100,7 @@ const SignIn = () => {
                             </div>
 
                             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                                <form action="#" method="POST" className="space-y-4" onSubmit={handleLoginSubmit} >
+                                <form action="#" method="POST" className="space-y-4" onSubmit={(e) => e.preventDefault()} >
 
                                     {
                                         !isLogin &&
@@ -142,12 +177,16 @@ const SignIn = () => {
                                     }
 
                                     <div>
-                                        <button
-                                            type="submit"
-                                            className="flex w-full hover:cursor-pointer justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                        >
-                                            Sign in
-                                        </button>
+                                        {
+                                            isLogin ?
+                                                <button type="submit" onClick={handleLoginClick} className="flex w-full hover:cursor-pointer justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" >
+                                                    Sign in
+                                                </button>
+                                                :
+                                                <button type="submit" onClick={handleSignUpClick} className="flex w-full hover:cursor-pointer justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" >
+                                                    Sign Up
+                                                </button>
+                                        }
                                         {
                                             error &&
                                             <div className='w-full'>

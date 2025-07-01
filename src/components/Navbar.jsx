@@ -7,13 +7,17 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { BASE_URL, navigation, userNavigation } from '../utils/constants'
 import { addUser } from '../utils/store/slices/userSlice'
 import { setActiveTab } from '../utils/store/slices/appSlice'
+import { handleLogout } from '../services/authService'
+import Toast from './Toast'
 
 const Navbar = () => {
 
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const user = useSelector(store => store.user.user)
     const app = useSelector(store => store.app)
-    
+
+    const toast = useSelector(store => store.app.toast)
+
     const location = useLocation()
 
     const dispatch = useDispatch()
@@ -106,11 +110,22 @@ const Navbar = () => {
                                             </Link>
                                         </MenuItem>
                                     ))}
+                                    <MenuItem>
+                                        <button onClick={() => handleLogout(dispatch, navigate)} className='w-full text-start px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:outline-hidden'>Log out</button>
+                                    </MenuItem>
+
                                 </MenuItems>
                             </Menu>
                         </div>
                 }
             </nav>
+            {
+                toast != null ?
+                    <div className='mx-4'>
+                        <Toast data={toast} /> 
+                    </div> : 
+                    ""
+            }
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
                 <div className="fixed inset-0 z-50" />
                 <DialogPanel className="fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-white p-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -170,6 +185,9 @@ const Navbar = () => {
                                             {item.name}
                                         </Link>
                                     ))}
+                                    <Link to={"/home"} onClick={() => handleLogout(dispatch, navigate)} className={`-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold hover:bg-gray-50`} >
+                                        Log out
+                                    </Link>
                                 </div>
 
                             }
@@ -177,6 +195,7 @@ const Navbar = () => {
                     </div>
                 </DialogPanel>
             </Dialog>
+
         </header>
     )
 }

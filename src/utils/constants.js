@@ -1,3 +1,4 @@
+
 export const testimonials = [
     {
         name: "Prem Kumar",
@@ -62,10 +63,6 @@ export const userNavigation = [
         name: "Edit Profile",
         href: "/profile/edit",
     },
-    {
-        name: "Log out",
-        href: "/logout"
-    }
 ]
 
 export const navigation = [
