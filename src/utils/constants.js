@@ -76,7 +76,8 @@ export const navigation = [
     { name: 'Company', href: '#' },
 ]
 
+navigation.forEach
 
-export const BASE_URL = "https://voizout.onrender.com"
+export const BASE_URL = "http://localhost:3000"
 
 export const protectedRoutes = ["/profile/edit", "/opportunities/job", "/opportunities/internship"]

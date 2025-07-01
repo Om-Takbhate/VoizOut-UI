@@ -51,7 +51,6 @@ const SignIn = () => {
             <div className="absolute inset-0">
                 <div className="absolute top-0 -z-10 h-full w-full bg-white [&>div]:absolute [&>div]:bottom-auto [&>div]:left-auto [&>div]:right-0 [&>div]:top-0 [&>div]:h-[500px] [&>div]:w-[500px] [&>div]:-translate-x-[30%] [&>div]:translate-y-[20%] [&>div]:rounded-full [&>div]:bg-[rgba(173,109,244,0.5)] [&>div]:opacity-50 [&>div]:blur-[80px]">
                     <div></div>
-
                 </div>
             </div>
 

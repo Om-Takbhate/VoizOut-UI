@@ -20,7 +20,6 @@ function Profile() {
     const user = useSelector(store => store.user.user)
     const params = useParams()
 
-    console.log(params)
 
     const fetchUser = async () => {
         try {
@@ -35,15 +34,16 @@ function Profile() {
     }
 
     useEffect(() => {
-        if (params.userId != null) {
+        if (params.userId && params.userId != null) {
             fetchUser()
         }
         else {
+            console.log("this user")
             setUserProfile(user)
         }
-    }, [params.userId])
-    
-    if(userProfile == null) {
+    }, [params, user])
+
+    if (userProfile == null) {
         return <UserProfileSkeleton />
     }
 
@@ -53,15 +53,11 @@ function Profile() {
                 shadow={false}
                 className="border border-gray-300 rounded-2xl"
             >
-                <CardHeader shadow={false} className="h-60 !rounded-lg">
-                    <img
-                        scr="https://influencermarketinghub.com/wp-content/uploads/2019/11/shutterstock_1038395047-1024x576.jpg"
-                        alt="dark"
-                        height={1024}
-                        width={1024}
-                        className="w-full h-full object-cover"
-                    />
-                </CardHeader>
+                <img
+                    src="https://plus.unsplash.com/premium_photo-1686359754750-05cb4b55f0e7?fm=jpg&q=60&w=3000"
+                    alt="profile-background-image"
+                    className="w-full h-48 object-cover"
+                />
                 <CardBody>
                     <div className="flex lg:gap-0 gap-6 flex-wrap justify-between items-center">
                         <div className="flex flex-col sm:flex-row mx-auto sm:mx-0 sm:justify-end items-center gap-3">

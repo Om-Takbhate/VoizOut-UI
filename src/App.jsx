@@ -5,6 +5,7 @@ import Home from './components/Home'
 import { Provider } from 'react-redux'
 import appStore from './utils/store/store'
 import { lazy, Suspense } from 'react'
+import Loader from './components/Loader'
 
 const PageNotFound = lazy(() => import("./components/PageNotFound"))
 const Profile = lazy(() => import("./components/Profile"))
@@ -18,7 +19,7 @@ function App() {
 
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>} >
+      <Suspense fallback={<Loader />} >
         <Provider store={appStore}>
           <BrowserRouter>
             <Routes>

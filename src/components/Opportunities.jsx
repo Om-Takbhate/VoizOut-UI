@@ -1,7 +1,8 @@
 import { useEffect, useState, lazy } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../utils/constants'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import Loader from './Loader'
 
 const SingleOpportunity = lazy(() => import('./SingleOpportunity'))
 
@@ -36,7 +37,9 @@ export default function Opportunities() {
         getOpportunities()
     }, [type])
 
-
+    if(opportunities.length == 0) {
+        return <Loader />
+    }
 
     return (
         <div className='min-h-screen py-20'>
