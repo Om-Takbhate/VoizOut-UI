@@ -17,7 +17,8 @@ export default function UpdateProfile() {
         name: user?.name || "",
         bio: user?.bio || "",
         photoUrl: user?.photoUrl || "",
-        contact: user?.contact || ""
+        contact: user?.contact || "",
+        skills: user?.skills || ""
     })
 
     useEffect(() => {
@@ -36,7 +37,7 @@ export default function UpdateProfile() {
         console.log("Re-Rendered: showEmail =", showEmail)
     }, [showEmail])
 
-    const { name, bio, contact, photoUrl } = formData
+    const { name, skills, bio, contact, photoUrl } = formData
 
     const handleChange = (field) => (e) => {
         setFormData(prev => ({
@@ -46,7 +47,7 @@ export default function UpdateProfile() {
     }
 
     const handleEditClick = async () => {
-        editProfileData(dispatch, name, contact, photoUrl, bio, showEmail)
+        editProfileData(dispatch, name, contact, photoUrl, bio, showEmail, skills)
     }
 
     if (!user) {
@@ -94,6 +95,16 @@ export default function UpdateProfile() {
                         </div>
                     </div>
 
+                    <div className="sm:col-span-2">
+                        <label htmlFor="photoUrl" className="block text-sm font-semibold text-gray-900">
+                            Skills <span className='text-gray-400'>(add comma seperated skills)</span>
+                        </label>
+                        <div className="mt-2.5">
+                            <input id="skills" name="skills" type="text" value={skills} onChange={handleChange('skills')} placeholder="React , Javascript , Rust" className="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 outline-gray-300 focus:outline-2 focus:outline-indigo-600"
+                            />
+                        </div>
+                    </div>
+                    
                     <div className="sm:col-span-2">
                         <label htmlFor="photoUrl" className="block text-sm font-semibold text-gray-900">
                             Photo link <span className='text-gray-400'>(optional)</span>

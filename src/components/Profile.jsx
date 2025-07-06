@@ -102,14 +102,14 @@ function Profile() {
                         </div>
                     </div>
                     <Typography
-                        variant="small"
+                        variant="lead"
                         className="font-normal text-gray-600 mt-6"
                     >
                         {userProfile.bio}
                     </Typography>
                 </CardBody>
             </Card>
-            <Skills skills={userProfile.skills} />
+            <Skills skills={userProfile.skills} showBorder={true} />
         </section>
     );
 }

@@ -6,6 +6,7 @@ import { Provider } from 'react-redux'
 import appStore from './utils/store/store'
 import { lazy, Suspense } from 'react'
 import Loader from './components/Loader'
+import { PAGE_NOT_FOUND_DESCRIPTION } from './utils/constants'
 
 const PageNotFound = lazy(() => import("./components/PageNotFound"))
 const Profile = lazy(() => import("./components/Profile"))
@@ -30,7 +31,7 @@ function App() {
                 <Route path="/profile/edit" element={<UpdateProfile />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/404" element={<PageNotFound />} />
+                <Route path="/404" element={<PageNotFound description={PAGE_NOT_FOUND_DESCRIPTION} />} title={"Page Not Found"} />
                 <Route path="" element={<Navigate to="/home" />} />
                 <Route path="*" element={<Navigate to="/404" />} />
               </Route>

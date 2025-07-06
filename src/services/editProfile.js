@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux"
 import { showToast } from "../utils/store/slices/appSlice"
 import { addUser } from "../utils/store/slices/userSlice"
 
-const editProfileData = async function (dispatch, name, contact, photoUrl, bio, showEmail) {
+const editProfileData = async function (dispatch, name, contact, photoUrl, bio, showEmail, skills) {
 
     try {
-        const res = await axios.patch(BASE_URL + "/api/v1/user/profile", { name, contact, photoUrl, bio, showEmail }, {
+        const res = await axios.patch(BASE_URL + "/api/v1/user/profile", { name, contact, photoUrl, bio, showEmail, skills }, {
             withCredentials: true
         })
 

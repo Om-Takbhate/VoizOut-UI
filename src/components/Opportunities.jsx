@@ -3,6 +3,7 @@ import axios from 'axios'
 import { BASE_URL } from '../utils/constants'
 import { useNavigate, useParams } from 'react-router-dom'
 import Loader from './Loader'
+import PageNotFound from './PageNotFound'
 
 const SingleOpportunity = lazy(() => import('./SingleOpportunity'))
 
@@ -10,6 +11,7 @@ const SingleOpportunity = lazy(() => import('./SingleOpportunity'))
 export default function Opportunities() {
 
     const [opportunities, setOpportunities] = useState([])
+    const [showLoader, setShowLoader] = useState(true)
 
     const navigate = useNavigate()
 
@@ -30,6 +32,9 @@ export default function Opportunities() {
                 navigate("/login")
             }
         }
+        finally {
+            setShowLoader(() => false)
+        }
 
     }
 
@@ -37,9 +42,15 @@ export default function Opportunities() {
         getOpportunities()
     }, [type])
 
-    if(opportunities.length == 0) {
+    if (showLoader) {
         return <Loader />
     }
+
+    if (opportunities.length == 0) {
+        return <PageNotFound title={"Nothing to show right now."} description={"Please check back later for new updates."} />
+    }
+
+    co
 
     return (
         <div className='min-h-screen py-20 mx-2'>

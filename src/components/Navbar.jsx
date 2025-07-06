@@ -122,8 +122,8 @@ const Navbar = () => {
             {
                 toast != null ?
                     <div className='mx-4'>
-                        <Toast data={toast} /> 
-                    </div> : 
+                        <Toast data={toast} />
+                    </div> :
                     ""
             }
             <Dialog open={mobileMenuOpen} onClose={setMobileMenuOpen} className="lg:hidden">
