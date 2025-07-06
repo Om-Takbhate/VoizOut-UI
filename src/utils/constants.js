@@ -73,8 +73,9 @@ export const navigation = [
     { name: 'Company', href: '#' },
 ]
 
-navigation.forEach
 
 export const BASE_URL = "https://voizout.onrender.com"
+
+export const DEFAULT_USER_IMAGE = "https://img.freepik.com/premium-psd/contact-icon-illustration-isolated_23-2151903357.jpg?semt=ais_hybrid&w=740"
 
 export const protectedRoutes = ["/profile/edit", "/opportunities/job", "/opportunities/internship"]

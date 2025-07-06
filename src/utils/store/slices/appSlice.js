@@ -11,7 +11,8 @@ const appSlice = createSlice({
             state.activeTab = action.payload
         },
         showToast: (state, action) => {
-            state.toast = action.payload            
+            console.log(action.payload)
+            state.toast = action.payload
         },
         hideToast: (state, action) => {
             state.toast = null
