@@ -25,7 +25,7 @@ const SignIn = () => {
         const password = passwordRef.current.value
 
         try {
-
+            setError("")
             const data = await login({emailId, password})
             console.log(data)
             console.log(data.data.message)
@@ -48,7 +48,7 @@ const SignIn = () => {
         e.preventDefault()
 
         try {
-
+            setError("")
             const name = nameRef.current.value
             const emailId = emailRef.current.value
             const password = passwordRef.current.value
