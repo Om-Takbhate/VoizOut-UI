@@ -74,8 +74,8 @@ export const navigation = [
 ]
 
 
-// export const BASE_URL = "https://voizout.onrender.com"
-export const BASE_URL = "http://localhost:3000"
+export const BASE_URL = "https://voizout.onrender.com"
+// export const BASE_URL = "http://localhost:3000"
 
 export const DEFAULT_USER_IMAGE = "https://img.freepik.com/premium-psd/contact-icon-illustration-isolated_23-2151903357.jpg?semt=ais_hybrid&w=740"
 
