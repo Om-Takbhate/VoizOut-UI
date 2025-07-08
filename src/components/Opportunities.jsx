@@ -50,8 +50,6 @@ export default function Opportunities() {
         return <PageNotFound title={"Nothing to show right now."} description={"Please check back later for new updates."} />
     }
 
-    co
-
     return (
         <div className='min-h-screen py-20 mx-2'>
             {
