@@ -39,6 +39,7 @@ export default function Opportunities() {
     }
 
     useEffect(() => {
+        setShowLoader(() => true)
         getOpportunities()
     }, [type])
 
