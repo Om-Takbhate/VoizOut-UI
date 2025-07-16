@@ -7,6 +7,8 @@ import appStore from './utils/store/store'
 import { lazy, Suspense } from 'react'
 import Loader from './components/Loader'
 import { PAGE_NOT_FOUND_DESCRIPTION } from './utils/constants'
+import Experiences from './components/Experiences'
+import ExperienceDescription from './components/ExperienceDescription'
 
 const PageNotFound = lazy(() => import("./components/PageNotFound"))
 const Profile = lazy(() => import("./components/Profile"))
@@ -30,6 +32,8 @@ function App() {
                 <Route path="/profile/:userId?" element={<Profile />} />
                 <Route path="/profile/edit" element={<UpdateProfile />} />
                 <Route path="/home" element={<Home />} />
+                <Route path="/experiences" element={<Experiences />} />
+                <Route path="/experiences/:experienceId" element={<ExperienceDescription />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/404" element={<PageNotFound description={PAGE_NOT_FOUND_DESCRIPTION} />} title={"Page Not Found"} />
                 <Route path="" element={<Navigate to="/home" />} />

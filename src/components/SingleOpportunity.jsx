@@ -2,15 +2,12 @@ import { Button, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react
 import { BoltIcon, BriefcaseIcon, BuildingOffice2Icon, CalendarIcon, ChevronDownIcon, CurrencyRupeeIcon, MapPinIcon, PencilIcon, WrenchScrewdriverIcon } from '@heroicons/react/20/solid'
 import { BookmarkIcon, EyeIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
+import {  dateStringFunction } from '../utils/constants'
 
 const SingleOpportunity = ({ opportunity, showViewButton }) => {
     const date = new Date(opportunity.deadline)
 
-    const dateString = new Intl.DateTimeFormat('en-GB', {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric'
-    }).format(date);
+    const dateString = dateStringFunction(date)
 
 
     return (

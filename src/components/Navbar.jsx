@@ -93,7 +93,7 @@ const Navbar = () => {
                                     <MenuButton className="relative flex max-w-xs items-center rounded-full bg-gray-500 text-sm focus:ring-2 focus:ring-white focus:ring-offset-1 focus:ring-offset-gray-800 focus:outline-hidden">
                                         <span className="absolute -inset-1.5" />
                                         <span className="sr-only">Open user menu</span>
-                                        <img alt="" src={user.imageUrl || "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg"} className="size-8 rounded-full" />
+                                        <img alt="" src={user.photoUrl || "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg"} className="size-8 rounded-full" />
                                     </MenuButton>
                                 </div>
                                 <MenuItems

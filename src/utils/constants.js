@@ -73,11 +73,21 @@ export const navigation = [
     { name: 'Company', href: '#' },
 ]
 
+export const dateStringFunction = (givenDate) => new Intl.DateTimeFormat('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+}).format(givenDate);
+
+
+
+export const validExperienceTypes = ["interview", "company", "scam", "college"]
+
 
 export const BASE_URL = "https://voizout.onrender.com"
 // export const BASE_URL = "http://localhost:3000"
 
-export const DEFAULT_USER_IMAGE = "https://img.freepik.com/premium-psd/contact-icon-illustration-isolated_23-2151903357.jpg?semt=ais_hybrid&w=740"
+export const DEFAULT_USER_IMAGE = "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg"
 
 
 export const PAGE_NOT_FOUND_DESCRIPTION = "Sorry, we couldn’t find the page you’re looking for."
