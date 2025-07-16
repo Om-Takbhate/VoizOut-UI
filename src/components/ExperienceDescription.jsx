@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { BASE_URL } from '../utils/constants'
+import { BASE_URL, dateStringFunction } from '../utils/constants'
 import Loader from './Loader'
 import { BriefcaseIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline'
 import UserCard from './UserCard'
+import { CalendarDateRangeIcon } from '@heroicons/react/24/solid'
 
 const ExperienceDescription = () => {
 
@@ -47,10 +48,10 @@ const ExperienceDescription = () => {
 
         <div className="mb-4 md:mb-0 w-full mx-auto relative">
           <div className="px-4 lg:px-0">
-            <h2 className="text-2xl md:text-4xl font-semibold text-gray-800 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-800 leading-tight">
               {experience.title}
             </h2>
-            <div className='mt-2 ml-2 flex gap-4'>
+            <div className='mt-2 ml-2 flex flex-col md:flex-row gap-4'>
               <div className="mt-2 flex items-center text-sm text-gray-500">
                 <BriefcaseIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
                 {experience.type}
@@ -58,6 +59,10 @@ const ExperienceDescription = () => {
               <div className="mt-2 flex items-center text-sm text-gray-500">
                 <BuildingOffice2Icon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
                 {experience.companyName}
+              </div>
+              <div className="mt-2 flex items-center text-sm text-gray-500">
+                <CalendarDateRangeIcon aria-hidden="true" className="mr-1.5 size-5 shrink-0 text-gray-400" />
+                {dateStringFunction(experience.createdAt)}
               </div>
             </div>
           </div>

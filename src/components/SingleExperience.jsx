@@ -8,11 +8,11 @@ const SingleExperience = ({ experience }) => {
     const dateString = dateStringFunction(date)
 
     return (
-        <li className="flex hover:bg-gray-100 px-4 rounded-lg cursor-pointer justify-between gap-x-6 py-5">
+        <li className="flex hover:bg-gray-100 px-4 rounded-lg cursor-pointer justify-between gap-x-6 py-5 border-b-1 border-gray-100">
             <div className="flex min-w-0 gap-x-4">
-                <img alt="" src={experience.author.photoUrl || DEFAULT_USER_IMAGE} className="size-12 flex-none rounded-full bg-gray-50" />
+                <img alt="" src={experience.author.photoUrl || DEFAULT_USER_IMAGE} className="size-12 flex-none rounded-full bg-gray-50 hidden md:block" />
                 <div className="min-w-0 flex-auto">
-                    <p className="text-md font-semibold text-gray-900">{experience.title}</p>
+                    <p className="text-xl font-semibold text-gray-900">{experience.title}</p>
                     <div className='flex gap-4'>
                         <div className="mt-2 flex items-center text-sm text-gray-500">
                             <UserCircleIcon aria-hidden="true" className="mr-1.5 size-4 shrink-0 text-gray-400" />
