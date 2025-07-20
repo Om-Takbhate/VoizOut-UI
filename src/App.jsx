@@ -9,6 +9,7 @@ import Loader from './components/Loader'
 import { PAGE_NOT_FOUND_DESCRIPTION } from './utils/constants'
 import Experiences from './components/Experiences'
 import ExperienceDescription from './components/ExperienceDescription'
+import PostExperience from './components/PostExperience'
 
 const PageNotFound = lazy(() => import("./components/PageNotFound"))
 const Profile = lazy(() => import("./components/Profile"))
@@ -33,6 +34,7 @@ function App() {
                 <Route path="/profile/edit" element={<UpdateProfile />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/experiences" element={<Experiences />} />
+                <Route path="/experiences/new" element={<PostExperience />} />
                 <Route path="/experiences/:experienceId" element={<ExperienceDescription />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/404" element={<PageNotFound description={PAGE_NOT_FOUND_DESCRIPTION} />} title={"Page Not Found"} />

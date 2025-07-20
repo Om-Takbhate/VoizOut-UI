@@ -102,7 +102,7 @@ function Profile() {
                         </div>
                     </div>
                     <Typography
-                        variant="lead"
+                        variant="paragraph"
                         className="font-normal text-gray-600 mt-6"
                     >
                         {userProfile.bio}

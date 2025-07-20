@@ -60,6 +60,10 @@ export const userNavigation = [
         href: "/applied",
     },
     {
+        name: "Share experience",
+        href: "/experiences/new",
+    },
+    {
         name: "Edit Profile",
         href: "/profile/edit",
     },

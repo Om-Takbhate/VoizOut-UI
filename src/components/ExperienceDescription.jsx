@@ -86,7 +86,11 @@ const ExperienceDescription = () => {
         <div className="flex flex-col lg:flex-row lg:space-x-12">
 
           <div className="px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full ">
-            <p>{experience.description}</p>
+            {
+              experience.description.split("\n").map((para, index) => (
+                <p key={index} className='mt-4'>{para}</p>
+              ))
+            }
           </div>
         </div>
       </main>

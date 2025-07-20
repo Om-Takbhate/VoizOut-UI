@@ -5,6 +5,7 @@ import { BASE_URL } from "../utils/constants"
 import SingleExperience from "./SingleExperience"
 import Loader from "./Loader"
 import { Link } from "react-router-dom"
+import Pagination from "./Pagination"
 
 const people = [
     {
@@ -63,12 +64,14 @@ const people = [
 
 export default function Experiences() {
 
-
+    const [isLoading, setIsLoading] = useState(false)
     const [experiences, setExperiences] = useState([])
+    const [page, setPage] = useState(0)
 
     const getExperiences = async () => {
+        setIsLoading(true)
         try {
-            const data = await axios.get(BASE_URL + "/api/v1/experience/all", {
+            const data = await axios.get(BASE_URL + "/api/v1/experience/all?page="+page, {
                 withCredentials: true
             })
 
@@ -77,6 +80,9 @@ export default function Experiences() {
         catch (err) {
             console.log(err)
         }
+        finally {
+            setIsLoading(false)
+        }
     }
 
     console.log("All experiences", experiences)
@@ -84,9 +90,9 @@ export default function Experiences() {
 
     useEffect(() => {
         getExperiences()
-    }, [])
+    }, [page])
 
-    if (experiences.length == 0) {
+    if (isLoading) {
         return <Loader />
     }
 
@@ -105,6 +111,8 @@ export default function Experiences() {
                     ))
                 }
             </ul>
+
+            <Pagination page={page} setPage={setPage} />
 
 
         </div>
