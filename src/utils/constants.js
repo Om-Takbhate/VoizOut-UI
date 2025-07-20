@@ -74,7 +74,6 @@ export const navigation = [
     { name: 'Jobs', href: '/opportunities/job' },
     { name: 'Internships', href: '/opportunities/internship' },
     { name: 'Experiences', href: '/experiences' },
-    { name: 'Company', href: '#' },
 ]
 
 export const dateStringFunction = (givenDate) => new Intl.DateTimeFormat('en-GB', {
