@@ -102,7 +102,7 @@ export default function Experiences() {
                 <SearchBar />
             </div>
 
-            <ul role="list" className="divide-y  lg:pr-18 divide-gray-100">
+            <ul role="list" className="divide-y   divide-gray-100">
                 {
                     experiences.map((experience) => (
                         <Link key={experience._id} to={`/experiences/${experience._id}`}>

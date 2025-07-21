@@ -6,6 +6,7 @@ import Loader from './Loader'
 import { BriefcaseIcon, BuildingOffice2Icon } from '@heroicons/react/24/outline'
 import UserCard from './UserCard'
 import { CalendarDateRangeIcon } from '@heroicons/react/24/solid'
+import { ArrowUpOnSquareStackIcon } from '@heroicons/react/16/solid'
 
 const ExperienceDescription = () => {
 
@@ -83,9 +84,10 @@ const ExperienceDescription = () => {
           </ul>
         </div>
 
-        <div className="flex flex-col lg:flex-row lg:space-x-12">
+        <div className="flex flex-col px-2  lg:space-x-12">
 
-          <div className="px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full ">
+          <h2 className='text-lg font-bold'>Description</h2>
+          <div className="px-4 bg-gray-50 lg:px-4 py-2 mt-2 text-gray-700 text-lg leading-relaxed w-full ">
             {
               experience.description.split("\n").map((para, index) => (
                 <p key={index} className='mt-4'>{para}</p>
