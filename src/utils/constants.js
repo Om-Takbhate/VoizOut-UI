@@ -55,10 +55,10 @@ export const userNavigation = [
         name: "Profile",
         href: "/profile",
     },
-    {
-        name: "My Applied",
-        href: "/applied",
-    },
+    // {
+    //     name: "My Applied",
+    //     href: "/applied",
+    // },
     {
         name: "Share experience",
         href: "/experiences/new",
