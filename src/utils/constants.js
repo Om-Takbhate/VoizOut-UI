@@ -87,8 +87,8 @@ export const dateStringFunction = (givenDate) => new Intl.DateTimeFormat('en-GB'
 export const validExperienceTypes = ["interview", "company", "scam", "college"]
 
 
-// export const BASE_URL = "https://voizout.onrender.com"
-export const BASE_URL = "http://localhost:3000"
+export const BASE_URL = "https://voizout.onrender.com"
+// export const BASE_URL = "http://localhost:3000"
 
 export const DEFAULT_USER_IMAGE = "https://wallpapers.com/images/hd/netflix-profile-pictures-1000-x-1000-qo9h82134t9nv0j0.jpg"
 
