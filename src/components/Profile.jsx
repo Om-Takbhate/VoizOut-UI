@@ -54,7 +54,7 @@ function Profile() {
                 className="border border-gray-300 rounded-2xl"
             >
                 <img
-                    src="https://img.freepik.com/premium-photo/bright-blue-geometric-modern-design-template_665346-4755.jpgcl"
+                    src={"https://www.feb.unpari.ac.id/data/images/carousel/1.png"}
                     alt="profile-background-image"
                     className="w-full h-48 object-cover"
                 />
