@@ -54,7 +54,7 @@ function Profile() {
                 className="border border-gray-300 rounded-2xl"
             >
                 <img
-                    src="https://plus.unsplash.com/premium_photo-1686359754750-05cb4b55f0e7?fm=jpg&q=60&w=3000"
+                    src="https://img.freepik.com/premium-photo/bright-blue-geometric-modern-design-template_665346-4755.jpgcl"
                     alt="profile-background-image"
                     className="w-full h-48 object-cover"
                 />
